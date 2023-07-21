@@ -1,7 +1,7 @@
 const params = (new URL(window.location.href)).searchParams
-const type = params.get('type') || 'gpu'
+const source = params.get('source') || 'gpu'
 
-window.document.getElementById('type').innerText = type
+window.document.getElementById('source').innerText = source
 
 function updateTemperature(temperature) {
   window.document.getElementById('temperature').innerText = temperature
@@ -12,20 +12,7 @@ window.nzxt = {
   v1: {
     onMonitoringDataUpdate: (data) => {
         const { cpus, gpus } = data
-        updateTemperature((type === 'cpu' ? cpus : gpus)[0].temperature)
+        updateTemperature((source === 'cpu' ? cpus : gpus)[0].temperature)
     }
   }
 }
-
-// Mock NZXT CAM data
-let cpuTemp = gpuTemp = 30
-
-setInterval(() => {
-  cpuTemp += Math.random() >= 0.5 ? 1 : -1
-  gpuTemp += Math.random() >= 0.5 ? 1 : -1
-
-  window.nzxt.v1.onMonitoringDataUpdate({
-    cpus: [{temperature: cpuTemp}],
-    gpus: [{temperature: gpuTemp}]
-  })
-}, 1000)
