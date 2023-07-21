@@ -1,0 +1,65 @@
+@font-face {
+    font-family: 'exocet-light';
+    src: url('../font/HyliaSerifBeta-Regular.otf');
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'exocet-light', sans-serif;
+}
+
+.container {
+    position: relative;
+    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+#background {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    animation: rotate 90s linear infinite;
+}
+
+.data {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.data h1 {
+    font-size: 5vw; /* 32 */
+    text-transform: uppercase;
+    color: white;
+}
+
+.data p {
+    margin: 0;
+    font-size: 18.75vw; /* 120 */
+    color: white;
+}
